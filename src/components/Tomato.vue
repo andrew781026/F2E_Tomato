@@ -7,16 +7,44 @@
         <div class="smile">
             <img src="../assets/smail.png" alt="smile">
         </div>
-        <div class="timer">
-            25:00
+        <div class="timer" v-on:click="count">
+            {{timer}}
         </div>
     </div>
 </template>
 
 <script>
+
     export default {
-        name: "Tomato"
+        name: "Tomato",
+
+        created() {
+            // 在 created 的時候才建立 penguine 順便設值為 0
+            this.timer = 0;
+        },
+        updated() {
+            // 讓我們可以知道組件有被更新
+            window.console.log('view updated , this.timer=', this.timer);
+        },
+        beforeMount() {
+            this.timeOutRefresh = window.setInterval(() => this.timer++, 1000);
+        },
+        methods: {
+            count() {
+
+                if (!this.timeOutRefresh) this.timeOutRefresh = window.setInterval(() => this.timer++, 1000);
+            }
+        },
+        beforeDestroy() {
+            window.clearInterval(this.timeOutRefresh);
+        },
+        data() {
+            return {
+                timer: this.timer,
+            }
+        },
     }
+
 </script>
 
 <style scoped>
