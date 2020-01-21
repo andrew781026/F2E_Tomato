@@ -1,28 +1,49 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <div class="say">
+            <Item/>
+        </div>
+        <div class="list">
+            <List/>
+        </div>
+        <div class="tomato">
+            <Tomato type="count"/>
+        </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import Tomato from './components/Tomato'
+    import Item from './components/Item'
+    import List from './components/List'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            Tomato, // style = [ count . music . stat ]
+            Item,
+            List,
+        }
+    }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
+    .tomato {
+        position: fixed;
+        top: 200px;
+        right: 150px;
+    }
+
+    .say {
+        position: fixed;
+        top: 100px;
+        left: 100px;
+    }
+
+    .list{
+        position: fixed;
+        top: 250px;
+        left: 130px;
+    }
 </style>
