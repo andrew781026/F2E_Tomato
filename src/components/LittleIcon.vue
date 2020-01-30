@@ -6,8 +6,8 @@
 
 <script>
     import tomatoImg from "../assets/tomato.png";
-    import musicImg from  "../assets/music.png";
-    import statsImg from  "../assets/chart.png";
+    import musicImg from "../assets/music.png";
+    import statsImg from "../assets/chart.png";
 
     // https://stackoverflow.com/questions/45116796/how-to-import-and-use-image-in-a-vue-single-file-component
     const iconMap = {
@@ -33,7 +33,7 @@
         data: function () {
 
             return {
-                icon:  iconMap[this.type] || {}
+                icon: iconMap[this.type] || {}
             }
         },
     }
@@ -47,6 +47,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 5px 30px 5px 15px; /* top right bottom left */
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+    }
+
+    .root:hover {
+        background-color: #f5f5f6;
+    }
+
+    .root.active {
+        background-color: #fdfdfe;
     }
 
 </style>

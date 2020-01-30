@@ -5,19 +5,25 @@
         </div>
         <div class="list">
             <List/>
+            <Info/>
         </div>
         <div class="tomato">
             <Tomato type="count"/>
+
+            <div class="line"></div>
+            <div>
+                <img class="button" src="./assets/play.png" alt="play" height="80">
+                <img class="button" src="./assets/stop.png" alt="play" height="80">
+            </div>
         </div>
-        <div class="little-icon-1">
-            <LittleIcon type="tomato" />
+        <div class="little-icon">
+            <div v-for="(item, index) in ['tomato','music']" :key="index">
+                <LittleIcon :type="item"/>
+                <div class="padding"></div>
+            </div>
+            <LittleIcon type="stats" :class="{ active: true }"/>
         </div>
-        <div class="little-icon-2">
-            <LittleIcon type="music" />
-        </div>
-        <div class="little-icon-3">
-            <LittleIcon type="stats" />
-        </div>
+
     </div>
 </template>
 
@@ -26,6 +32,7 @@
     import Item from './components/Item'
     import List from './components/List'
     import LittleIcon from './components/LittleIcon'
+    import Info from './components/Info'
 
     export default {
         name: 'app',
@@ -34,6 +41,7 @@
             Item,
             List,
             LittleIcon,  // type = tomato . music . stats
+            Info,
         }
     }
 </script>
@@ -42,8 +50,21 @@
 
     .tomato {
         position: fixed;
-        top: 200px;
+        top: 180px;
         right: 150px;
+    }
+
+    .line {
+        margin-top: 30px;
+        min-height: 10px;
+        background-color: #fdfdfe;
+        border-radius: 10px;
+        width: 115%;
+        transform: translateX(-6.5%);
+    }
+
+    .button {
+        margin: 10px;
     }
 
     .say {
@@ -52,39 +73,24 @@
         left: 100px;
     }
 
-    .list{
+    .list {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: calc(100vh - 270px);
         position: fixed;
         top: 250px;
         left: 130px;
     }
 
-    .little-icon-1{
+    .little-icon {
         position: fixed;
         top: 30px;
         right: 0;
-        background-color: #fdfdfe;
-        padding: 5px 30px 5px 15px; /* top right bottom left */
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
     }
 
-    .little-icon-2{
-        position: fixed;
-        top: 110px;
-        right: 0;
-        background-color: #fdfdfe;
-        padding: 5px 30px 5px 15px; /* top right bottom left */
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
+    .padding {
+        min-height: 10px;
     }
 
-    .little-icon-3{
-        position: fixed;
-        top: 190px;
-        right: 0;
-        background-color: #fdfdfe;
-        padding: 5px 30px 5px 15px; /* top right bottom left */
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
-    }
 </style>
