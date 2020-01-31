@@ -5,8 +5,11 @@
             <div class="text">{{item}}</div>
             <img src="../assets/play.png" height="50">
         </div>
-        <div class="container">
-            <input class="input" type="text" placeholder="Add A New Mission..."/>
+        <div class="container" v-if="list && list.length < 7">
+            <input v-model="newToDo" class="input"
+                   type="text" placeholder="Add A New Mission..."
+                   v-on:keyup.enter="addToDo"
+            />
 
             <div class="plus">
                 <img src="../assets/plus.png" height="40">
@@ -20,13 +23,25 @@
     export default {
         name: "List",
 
+        beforeCreate() {
+            this.list = [
+                'The Second Thing To Do Today',
+                'The Third Thing To Do Today',
+                'The Forth Thing To Do Today',
+            ]
+        },
+
         data() {
             return {
-                list: [
-                    'The Second Thing To Do Today',
-                    'The Third Thing To Do Today',
-                    'The Forth Thing To Do Today',
-                ],
+                newToDo: this.newToDo,
+                list: this.list,
+            }
+        },
+
+        methods: {
+            addToDo: function () {
+                this.list.push(this.newToDo);
+                this.newToDo = '';
             }
         },
     }

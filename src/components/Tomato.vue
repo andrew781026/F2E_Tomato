@@ -23,7 +23,7 @@
                 type: String,
                 required: false
             },
-            time: Number
+            time: String
         },
     }
 

@@ -4,8 +4,8 @@
 
         <div class="line"></div>
         <div>
-            <img class="button" src="../assets/play.png" alt="play" height="80" @click="start">
-            <img class="button" src="../assets/stop.png" alt="pause" height="80" @click="pause">
+            <img v-if="!timeOutRefresh" class="button" src="../assets/play.png" alt="play" height="80" @click="start">
+            <img v-else class="button" src="../assets/stop.png" alt="pause" height="80" @click="pause">
         </div>
     </div>
 </template>
@@ -60,6 +60,7 @@
                 if (this.timeOutRefresh) {
 
                     window.clearInterval(this.timeOutRefresh);
+                    this.timeOutRefresh = undefined;
                 }
             }
         },
@@ -69,6 +70,7 @@
         data() {
             return {
                 timer: this.timer,
+                timeOutRefresh: this.timeOutRefresh,
             }
         },
         computed: {
