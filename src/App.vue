@@ -8,13 +8,7 @@
             <Info/>
         </div>
         <div class="tomato">
-            <Tomato type="count"/>
-
-            <div class="line"></div>
-            <div>
-                <img class="button" src="./assets/play.png" alt="play" height="80">
-                <img class="button" src="./assets/stop.png" alt="play" height="80">
-            </div>
+            <TomatoDiv/>
         </div>
         <div class="little-icon">
             <div v-for="(item, index) in ['tomato','music']" :key="index">
@@ -28,7 +22,7 @@
 </template>
 
 <script>
-    import Tomato from './components/Tomato'
+    import TomatoDiv from './components/TomatoDiv'
     import Item from './components/Item'
     import List from './components/List'
     import LittleIcon from './components/LittleIcon'
@@ -37,7 +31,7 @@
     export default {
         name: 'app',
         components: {
-            Tomato, // type = [ count . music . stat ]
+            TomatoDiv, // type = [ count . music . stat ]
             Item,
             List,
             LittleIcon,  // type = tomato . music . stats
@@ -52,19 +46,6 @@
         position: fixed;
         top: 180px;
         right: 150px;
-    }
-
-    .line {
-        margin-top: 30px;
-        min-height: 10px;
-        background-color: #fdfdfe;
-        border-radius: 10px;
-        width: 115%;
-        transform: translateX(-6.5%);
-    }
-
-    .button {
-        margin: 10px;
     }
 
     .say {
